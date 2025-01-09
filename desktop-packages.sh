@@ -17,9 +17,7 @@ EOF
 LAYERED_PACKAGES=(
     cascadia-fonts-all
     code
-    devpod
     emacs
-    ghostty
     git-credential-libsecret
     git-credential-oauth
     filezilla
