@@ -1,6 +1,8 @@
 # add some DX packages. Not all. 
 # source: https://github.com/ublue-os/bluefin/blob/main/build_files/dx/01-install-copr-repos-dx.sh
 
+set -ouex pipefail
+
 FEDORA_MAJOR_VERSION=$(rpm -E %fedora)
 
 # Fonts
