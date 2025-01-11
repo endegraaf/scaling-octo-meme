@@ -31,6 +31,24 @@ LAYERED_PACKAGES=(
     jetbrains-mono-fonts-all 
     bat 
     netcat
+    nerd-fonts
+    podman-bootc
+    podman-compose
+    podman-machine
+    podman-tui
+    powerline-fonts
+    virt-manager
+    virt-viewer
+    qemu-system-x86-core
+    qemu
+    qemu-img
+    genisoimage
+    p7zip
+    p7zip-plugins
+    google-noto-fonts-all
+    cascadia-code-fonts
+    git-credential-libsecret
+    python3-pip
 )
 dnf5 install -y "${LAYERED_PACKAGES[@]}"
 
