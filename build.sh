@@ -4,6 +4,8 @@ set -ouex pipefail
 
 mkdir -p /var/lib/alternatives
 
+localectl set-locale LANG=en_US.utf8
+
 # My Packages
 /ctx/desktop-packages.sh
 
