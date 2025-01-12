@@ -5,6 +5,11 @@ set -eou pipefail
 mkdir -p /etc/xdg/autostart
 mkdir -p /etc/environment.d
 
+
+tee /etc/locale.conf<<'EOF'
+LANG="en_US.UTF-8"
+EOF
+
 # Zed SSD
 tee /tmp/zed.conf <<EOF
 ZED_WINDOW_DECORATIONS=server
