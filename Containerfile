@@ -1,6 +1,9 @@
 FROM scratch AS ctx
 COPY / /
 
+ENV LANG C.UTF-8
+ENV LC_ALL C.UTF-8
+
 ## 1. BUILD ARGS
 # See list here: https://github.com/orgs/ublue-os/packages?repo_name=main
 

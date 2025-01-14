@@ -57,10 +57,7 @@ LAYERED_PACKAGES=(
     podman-machine
     podman-tui
     powerline-fonts
-    virt-manager
-    virt-viewer
     qemu-system-x86-core
-    qemu
     qemu-img
     genisoimage
     p7zip
@@ -69,6 +66,9 @@ LAYERED_PACKAGES=(
     cascadia-code-fonts
     git-credential-libsecret
     python3-pip
+
+    libvirt libvirt-daemon libvirt-daemon-config-network libvirt-daemon-driver-interface libvirt-daemon-driver-network libvirt-daemon-driver-nwfilter libvirt-daemon-driver-qemu libvirt-daemon-driver-secret libvirt-daemon-driver-storage-core libvirt-daemon-kvm qemu qemu-kvm virt-install virt-manager virt-viewer
+
 )
 dnf5 install -y "${LAYERED_PACKAGES[@]}"
 
