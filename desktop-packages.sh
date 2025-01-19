@@ -6,7 +6,7 @@ set -ouex pipefail
 
 FEDORA_MAJOR_VERSION=$(rpm -E %fedora)
 
-echo "add COPR repos for F${FEDORA_MAJOR_VERSION}" 
+echo "Add COPR repos for F${FEDORA_MAJOR_VERSION}"
 
 # Fonts
 curl --retry 3 -Lovvv /etc/yum.repos.d/atim-ubuntu-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo \
@@ -37,40 +37,65 @@ dnf5 group install -y virtualization
 
 # Layered Applications
 LAYERED_PACKAGES=(
+    bat
+    cascadia-code-fonts
     cascadia-fonts-all
+    chromium
     code
+    containerd.io
+    edk2-ovmf
     emacs
+    filezilla
+    genisoimage
+    genisoimage
+    git-credential-libsecret
     git-credential-libsecret
     git-credential-oauth
-    filezilla
-    krita 
-    kdenlive 
-    syncthing 
-    obs-studio 
-    vlc 
-    chromium 
-    syncthing 
-    jetbrains-mono-fonts-all 
-    bat 
-    netcat
+    google-noto-fonts-all
+    jetbrains-mono-fonts-all
+    kdenlive
+    krita
+    libvirt
+    libvirt-daemon
+    libvirt-daemon-config-network
+    libvirt-daemon-driver-interface
+    libvirt-daemon-driver-network
+    libvirt-daemon-driver-nwfilter
+    libvirt-daemon-driver-qemu
+    libvirt-daemon-driver-secret
+    libvirt-daemon-driver-storage-core
+    libvirt-daemon-kvm
+    libvirt-nss
     nerd-fonts
+    netcat
+    obs-studio
+    p7zip
+    p7zip-plugins
     podman-bootc
     podman-compose
     podman-machine
+    podmansh
     podman-tui
     powerline-fonts
-    qemu-system-x86-core
-    qemu-img
-    genisoimage
-    p7zip
-    p7zip-plugins
-    google-noto-fonts-all
-    cascadia-code-fonts
-    git-credential-libsecret
     python3-pip
-
-    libvirt libvirt-daemon libvirt-daemon-config-network libvirt-daemon-driver-interface libvirt-daemon-driver-network libvirt-daemon-driver-nwfilter libvirt-daemon-driver-qemu libvirt-daemon-driver-secret libvirt-daemon-driver-storage-core libvirt-daemon-kvm qemu qemu-kvm virt-install virt-manager virt-viewer
-
+    qemu
+    qemu-char-spice
+    qemu-device-display-virtio-gpu
+    qemu-device-display-virtio-vga
+    qemu-device-usb-redirect
+    qemu-img
+    qemu-system-x86-core
+    qemu-user-binfmt
+    qemu-user-static
+    syncthing
+    syncthing
+    virt-install
+    virt-manager
+    virt-v2v
+    virt-viewer
+    vlc
+    ydotool
+    ydotool
 )
 dnf5 install -y "${LAYERED_PACKAGES[@]}"
 
