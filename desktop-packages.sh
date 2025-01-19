@@ -42,8 +42,6 @@ LAYERED_PACKAGES=(
     cascadia-fonts-all
     chromium
     code
-    containerd.io
-    edk2-ovmf
     emacs
     filezilla
     genisoimage
@@ -56,21 +54,10 @@ LAYERED_PACKAGES=(
     kdenlive
     krita
     libvirt
-    libvirt-daemon
-    libvirt-daemon-config-network
-    libvirt-daemon-driver-interface
-    libvirt-daemon-driver-network
-    libvirt-daemon-driver-nwfilter
-    libvirt-daemon-driver-qemu
-    libvirt-daemon-driver-secret
-    libvirt-daemon-driver-storage-core
-    libvirt-daemon-kvm
     libvirt-nss
     nerd-fonts
-    netcat
     obs-studio
     p7zip
-    p7zip-plugins
     podman-bootc
     podman-compose
     podman-machine
@@ -79,20 +66,11 @@ LAYERED_PACKAGES=(
     powerline-fonts
     python3-pip
     qemu
-    qemu-char-spice
-    qemu-device-display-virtio-gpu
-    qemu-device-display-virtio-vga
-    qemu-device-usb-redirect
-    qemu-img
-    qemu-system-x86-core
     qemu-user-binfmt
     qemu-user-static
     syncthing
     syncthing
-    virt-install
-    virt-manager
     virt-v2v
-    virt-viewer
     vlc
     ydotool
     ydotool
