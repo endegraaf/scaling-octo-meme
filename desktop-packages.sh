@@ -33,6 +33,8 @@ gpgcheck=1
 gpgkey=https://packages.microsoft.com/keys/microsoft.asc
 EOF
 
+dnf5 group install -y virtualization
+
 # Layered Applications
 LAYERED_PACKAGES=(
     cascadia-fonts-all
@@ -71,7 +73,6 @@ LAYERED_PACKAGES=(
 
 )
 dnf5 install -y "${LAYERED_PACKAGES[@]}"
-dnf5 group install -y virtualization
 
 # Zed because why not?
 curl -Lo /tmp/zed.tar.gz \
