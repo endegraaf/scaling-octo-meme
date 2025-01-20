@@ -63,6 +63,7 @@ LAYERED_PACKAGES=(
     podman-machine
     podmansh
     podman-tui
+    powerline
     powerline-fonts
     python3-pip
     qemu
@@ -96,8 +97,6 @@ curl -Lo /tmp/emacs-lsp-booster.zip "$EMACS_LSP_BOOSTER"
 unzip -d /usr/bin/ /tmp/emacs-lsp-booster.zip
 
 dnf5 clean all
-
-pip install powerline-shell
 
 # Call other Scripts
 /ctx/desktop-defaults.sh
