@@ -97,6 +97,7 @@ unzip -d /usr/bin/ /tmp/emacs-lsp-booster.zip
 
 dnf5 clean all
 
+pip install powerline-shell
 
 # Call other Scripts
 /ctx/desktop-defaults.sh
