@@ -6,7 +6,7 @@ mkdir -p /var/lib/alternatives
 
 
 # My Packages
-/ctx/desktop-packages.sh
+./desktop-packages.sh
 
 
 ## NOTES:

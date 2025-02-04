@@ -99,5 +99,5 @@ unzip -d /usr/bin/ /tmp/emacs-lsp-booster.zip
 dnf5 clean all
 
 # Call other Scripts
-/ctx/desktop-defaults.sh
-/ctx/enable-services.sh
+./desktop-defaults.sh
+./enable-services.sh
