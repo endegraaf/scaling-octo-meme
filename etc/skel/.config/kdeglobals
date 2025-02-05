@@ -1,0 +1,28 @@
+[General]
+ColorScheme=BreezeDark
+Name=Breeze Dark
+UseSystemBell=true
+XftAntialias=true
+XftHintStyle=hintfull
+XftSubPixel=rgb
+fixed=Cascadia Code PL,12,-1,5,300,0,0,0,0,0,0,0,0,0,0,1,Light
+font=Noto Sans,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+menuFont=Droid Sans [1ASC],12,-1,5,50,0,0,0,0,0
+shadeSortColumn=true
+smallestReadableFont=Droid Sans [1ASC],11,-1,5,50,0,0,0,0,0
+toolBarFont=Droid Sans [1ASC],12,-1,5,50,0,0,0,0,0
+widgetStyle=Breeze
+
+[Icons]
+Theme=breeze-dark
+
+[KDE]
+AnimationDurationFactor=0.125
+ColorScheme=BreezeDark
+LookAndFeelPackage=org.kde.breezedark.desktop
+ShowDeleteCommand=false
+ShowIconsInMenuItems=true
+ShowIconsOnPushButtons=true
+SingleClick=true
+contrast=4
+widgetStyle=Breeze
