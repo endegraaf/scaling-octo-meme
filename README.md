@@ -4,7 +4,7 @@ I wanted quite a vanilla experience in terms of KDE/Plasma still with the added 
 
 Name of this repo (scaling octo meme) is the default random name by the ublue-os template script. Check [here](https://github.com/ublue-os/image-template) for the template repo. 
 
-![My vanilla desktop dark](screenshot.png "Screenshot")
+![My vanilla desktop dark](Screenshot_20250206_205715.png "Screenshot")
 
 [![Build Status](https://github.com/endegraaf/scaling-octo-meme/actions/workflows/build.yml/badge.svg)](https://github.com/endegraaf/scaling-octo-meme/actions/)
 
