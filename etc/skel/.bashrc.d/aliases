@@ -1,0 +1,6 @@
+alias hist=history
+alias psef='ps -ef ' 
+alias gst='git status'
+alias gca='git commit -a '
+alias gcm='git commit -m '
+

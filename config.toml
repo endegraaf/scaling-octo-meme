@@ -1,0 +1,32 @@
+[customizations.installer.kickstart]
+contents = """
+lang en_US.UTF-8
+keyboard us
+timezone CET
+
+user --name demo --password demo123demo --plaintext --groups wheel
+rootpw --lock
+
+zerombr
+clearpart --all --initlabel
+autopart --noswap --type=lvm
+reboot --eject
+%post
+bootc switch --mutate-in-place --transport registry --enforce-container-sigpolicy ghcr.io/endegraaf/scaling-octo-meme:latest
+%end
+"""
+
+[customizations.installer.modules]
+enable = [
+  "org.fedoraproject.Anaconda.Modules.Storage"
+]
+disable = [
+  "org.fedoraproject.Anaconda.Modules.Subscription",
+  "org.fedoraproject.Anaconda.Modules.Localization"
+  #"org.fedoraproject.Anaconda.Modules.Network",
+  #"org.fedoraproject.Anaconda.Modules.Security",
+  #"org.fedoraproject.Anaconda.Modules.Services",
+  #"org.fedoraproject.Anaconda.Modules.Users",
+  #"org.fedoraproject.Anaconda.Modules.Timezone",
+]
+
