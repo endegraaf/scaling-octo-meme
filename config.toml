@@ -6,14 +6,15 @@ timezone CET
 
 user --name demo --password demo123demo --plaintext --groups wheel
 rootpw --lock
-
 zerombr
 clearpart --all --initlabel
 autopart --noswap --type=lvm
-reboot --eject
+
 %post
-bootc switch --mutate-in-place --transport registry --enforce-container-sigpolicy ghcr.io/endegraaf/scaling-octo-meme:latest
+bootc switch --mutate-in-place --transport registry quay.io/fedora-ostree-desktops/kinoite:42
+reboot --eject
 %end
+
 """
 
 [customizations.installer.modules]

@@ -47,7 +47,6 @@ LAYERED_PACKAGES=(
     genisoimage
     genisoimage
     git-credential-libsecret
-    git-credential-libsecret
     git-credential-oauth
     google-noto-fonts-all
     jetbrains-mono-fonts-all
@@ -70,10 +69,8 @@ LAYERED_PACKAGES=(
     qemu-user-binfmt
     qemu-user-static
     syncthing
-    syncthing
     virt-v2v
     vlc
-    ydotool
     ydotool
 )
 dnf5 install -y "${LAYERED_PACKAGES[@]}"
