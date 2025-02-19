@@ -24,7 +24,7 @@ curl --retry 3 -Lo /etc/yum.repos.d/gmaglione-podman-bootc-fedora-"${FEDORA_MAJO
     https://copr.fedorainfracloud.org/coprs/gmaglione/podman-bootc/repo/fedora-"${FEDORA_MAJOR_VERSION}"/gmaglione-podman-bootc-fedora-"${FEDORA_MAJOR_VERSION}".repo
 
 # PyCharm
-curl --retry 3 -Lo /etc/yum.repos.d/phracek:PyCharm-"${FEDORA_MAJOR_VERSION}".repo \
+curl --retry 3 -Lo /etc/yum.repos.d/phracek-pycharm-"${FEDORA_MAJOR_VERSION}".repo \
     https://copr.fedorainfracloud.org/coprs/phracek/PyCharm/repo/fedora-"${FEDORA_MAJOR_VERSION}"/phracek-PyCharm-fedora-"${FEDORA_MAJOR_VERSION}".repo
 
 # VSCode because it's still better for a lot of things
@@ -68,7 +68,6 @@ LAYERED_PACKAGES=(
     podman-tui
     powerline
     powerline-fonts
-    pycharm-community
     python3-pip
     qemu
     qemu-user-binfmt
@@ -79,6 +78,8 @@ LAYERED_PACKAGES=(
     ydotool
 )
 dnf5 install -y "${LAYERED_PACKAGES[@]}"
+
+rpm-ostree install -y pycharm-community
 
 # Zed because why not?
 curl -Lo /tmp/zed.tar.gz \
