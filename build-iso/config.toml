@@ -3,8 +3,7 @@ contents = """
 lang en_US.UTF-8
 keyboard us
 timezone CET
-
-user --name demo --password demo123demo --plaintext --groups wheel
+user --name demo --password demo --plaintext --groups wheel
 rootpw --lock
 zerombr
 clearpart --all --initlabel
@@ -14,7 +13,6 @@ autopart --noswap --type=lvm
 bootc switch --mutate-in-place --transport registry quay.io/fedora-ostree-desktops/kinoite:42
 reboot --eject
 %end
-
 """
 
 [customizations.installer.modules]
