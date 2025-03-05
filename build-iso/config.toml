@@ -7,12 +7,13 @@ user --name demo --password demo --plaintext --groups wheel
 rootpw --lock
 zerombr
 clearpart --all --initlabel
-autopart --noswap --type=lvm
+#autopart --noswap --type=lvm
+autopart
 
-%post
-bootc switch --mutate-in-place --transport registry quay.io/fedora-ostree-desktops/kinoite:42
-reboot --eject
-%end
+# %post
+# bootc switch --mutate-in-place --transport registry quay.io/fedora-ostree-desktops/kinoite:42
+# reboot --eject
+# %end
 """
 
 [customizations.installer.modules]
