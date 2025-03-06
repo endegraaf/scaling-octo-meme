@@ -84,11 +84,15 @@ jobs:
         shell: bash
         env:
           RCLONE_CONFIG_R2_TYPE: s3
-          RCLONE_CONFIG_R2_PROVIDER: Cloudflare
-          RCLONE_CONFIG_R2_ACCESS_KEY_ID: ${{ secrets.AURORA_R2_ACCESS_KEY_ID }}
-          RCLONE_CONFIG_R2_SECRET_ACCESS_KEY: ${{ secrets.AURORA_R2_SECRET_ACCESS_KEY }}
-          RCLONE_CONFIG_R2_REGION: auto
-          RCLONE_CONFIG_R2_ENDPOINT: ${{ secrets.AURORA_R2_ENDPOINT }}
+          RCLONE_CONFIG_R2_PROVIDER: AWS
+          RCLONE_CONFIG_R2_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          RCLONE_CONFIG_R2_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          RCLONE_CONFIG_R2_REGION: eu-central-1
+          RCLONE_CONFIG_R2_LOCATION_CONSTRAINT: eu-central-1
+          RCLONE_CONFIG_R2_ACL: private
+          RCLONE_CONFIG_R2_SERVERSIDE_ENCRYPTION: aws:kms
+          RCLONE_CONFIG_R2_KMS_KEY_ID: ${{ secrets.AWS_KMS_KEY_ID }}
+          RCLONE_CONFIG_STORAGE_CLASS: STANDARD
           SOURCE_DIR: ${{ steps.upload-directory.outputs.iso-upload-dir }}
         run: |
           sudo apt-get update
