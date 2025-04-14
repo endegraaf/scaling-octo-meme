@@ -49,12 +49,12 @@ LAYERED_PACKAGES=(
     emacs
     filezilla
     genisoimage
-    genisoimage
     git-credential-libsecret
     git-credential-oauth
     google-noto-fonts-all
     jetbrains-mono-fonts-all
     kdenlive
+    konsole
     krita
     libvirt
     libvirt-nss
