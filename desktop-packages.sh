@@ -27,6 +27,11 @@ curl --retry 3 -Lo /etc/yum.repos.d/gmaglione-podman-bootc-fedora-"${FEDORA_MAJO
 curl --retry 3 -Lo /etc/yum.repos.d/phracek-pycharm-"${FEDORA_MAJOR_VERSION}".repo \
     https://copr.fedorainfracloud.org/coprs/phracek/PyCharm/repo/fedora-"${FEDORA_MAJOR_VERSION}"/phracek-PyCharm-fedora-"${FEDORA_MAJOR_VERSION}".repo
 
+# VPN
+curl --retry 3 -Lo /etc/yum.repos.d/mullvad.repo \ 
+    https://repository.mullvad.net/rpm/stable/mullvad.repo
+
+
 # VSCode because it's still better for a lot of things
 tee /etc/yum.repos.d/vscode.repo <<'EOF'
 [code]
@@ -76,6 +81,7 @@ LAYERED_PACKAGES=(
     virt-v2v
     vlc
     ydotool
+    mullvad-vpn
 )
 dnf5 install -y "${LAYERED_PACKAGES[@]}"
 
