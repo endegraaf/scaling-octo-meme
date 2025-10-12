@@ -80,11 +80,10 @@ LAYERED_PACKAGES=(
     virt-v2v
     vlc
     ydotool
-    mullvad-vpn
 )
 dnf5 install -y "${LAYERED_PACKAGES[@]}"
 
-rpm-ostree install -y pycharm-community
+rpm-ostree install -y pycharm-community mullvad-vpn
 
 # Zed because why not?
 curl -Lo /tmp/zed.tar.gz \
