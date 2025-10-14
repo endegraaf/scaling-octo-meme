@@ -83,7 +83,7 @@ LAYERED_PACKAGES=(
 )
 dnf5 install -y "${LAYERED_PACKAGES[@]}"
 
-rpm-ostree install -y pycharm-community mullvad-vpn
+rpm-ostree install -y pycharm-community
 
 # Zed because why not?
 curl -Lo /tmp/zed.tar.gz \
