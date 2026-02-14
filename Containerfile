@@ -2,7 +2,7 @@
 # See list here: https://github.com/orgs/ublue-os/packages?repo_name=main
 
 ### 2. SOURCE IMAGE
-FROM ghcr.io/ublue-os/bazzite-dx-nvidia:stable-42
+FROM ghcr.io/ublue-os/bazzite-dx:stable-42
 
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
