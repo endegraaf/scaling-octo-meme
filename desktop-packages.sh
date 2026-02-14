@@ -4,7 +4,11 @@
 set -ouex pipefail
 
 ZED_URL="https://zed.dev/api/releases/stable/latest/zed-linux-x86_64.tar.gz"
-ZED_DEST="/opt/zed.app"
+if [ -L "/opt" ] || [ -d "/var/opt" ]; then
+    ZED_DEST="/var/opt/zed.app"
+else
+    ZED_DEST="/opt/zed.app"
+fi
 TMP_FILE="/tmp/zed.tar.gz"
 
 # 1. Use the native COPR plugin instead of manual curls
