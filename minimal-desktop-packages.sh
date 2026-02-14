@@ -4,7 +4,7 @@ set -euo pipefail
 # 1. Use the native COPR plugin instead of manual curls
 # Syntax: dnf copr enable <user/project> -y
 REPOS=(
-    "retrozinndev/ags"
+    "dturner/eww"
 )
 
 echo "Enabling COPR repositories..."
