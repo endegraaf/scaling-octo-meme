@@ -11,16 +11,16 @@ echo "Add COPR repos for F${FEDORA_MAJOR_VERSION}"
 
 # Fonts
 curl --retry 3 -L  \
-    $COPR_URL/atim/ubuntu-fonts/repo/fedora-"${FEDORA_MAJOR_VERSION}"/atim-ubuntu-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo \ 
+    $COPR_URL/atim/ubuntu-fonts/repo/fedora-"${FEDORA_MAJOR_VERSION}"/atim-ubuntu-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo \
     -o /etc/yum.repos.d/atim-ubuntu-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo
 
 curl --retry 3 -L  \
-    $COPR_URL/che/nerd-fonts/repo/fedora-"${FEDORA_MAJOR_VERSION}"/che-nerd-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo \ 
+    $COPR_URL/che/nerd-fonts/repo/fedora-"${FEDORA_MAJOR_VERSION}"/che-nerd-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo \
     -o /etc/yum.repos.d/_copr_che-nerd-fonts-"${FEDORA_MAJOR_VERSION}".repo
 
 # Kvmfr module
 curl --retry 3 -L  \
-    $COPR_URL/hikariknight/looking-glass-kvmfr/repo/fedora-"${FEDORA_MAJOR_VERSION}"/hikariknight-looking-glass-kvmfr-fedora-"${FEDORA_MAJOR_VERSION}".repo \ 
+    $COPR_URL/hikariknight/looking-glass-kvmfr/repo/fedora-"${FEDORA_MAJOR_VERSION}"/hikariknight-looking-glass-kvmfr-fedora-"${FEDORA_MAJOR_VERSION}".repo \
     -o /etc/yum.repos.d/hikariknight-looking-glass-kvmfr-fedora-"${FEDORA_MAJOR_VERSION}".repo
 
 # Podman-bootc
@@ -30,7 +30,7 @@ curl --retry 3 -L \
 
 # PyCharm
 curl --retry 3 -L \
-    $COPR_URL/phracek/PyCharm/repo/fedora-"${FEDORA_MAJOR_VERSION}"/phracek-PyCharm-fedora-"${FEDORA_MAJOR_VERSION}".repo \ 
+    $COPR_URL/phracek/PyCharm/repo/fedora-"${FEDORA_MAJOR_VERSION}"/phracek-PyCharm-fedora-"${FEDORA_MAJOR_VERSION}".repo \
     -o /etc/yum.repos.d/phracek-pycharm-"${FEDORA_MAJOR_VERSION}".repo
 
 # VPN
