@@ -11,7 +11,7 @@ echo "Add COPR repos for F${FEDORA_MAJOR_VERSION}"
 
 # Fonts
 curl --retry 3 -L  \
-    $COPR_URL/atim/ubuntu-fonts/repo/fedora-"${FEDORA_MAJOR_VERSION}"/atim-ubuntu-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo \ 
+    $COPR_URL/atim/ubuntu-fonts/repo/fedora-"${FEDORA_MAJOR_VERSION}"/atim-ubuntu-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo \
     -o /etc/yum.repos.d/ericdegraaf-"${FEDORA_MAJOR_VERSION}".repo
 
 
