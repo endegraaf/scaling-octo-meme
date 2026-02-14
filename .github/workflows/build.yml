@@ -8,7 +8,7 @@ on:
     - cron: '05 10 * * *'  # 10:05am UTC everyday
   push:
     branches:
-      - feature/non-nvidia
+      - feature/non-nvidia-version
 
     paths-ignore:
       - '**/README.md'
