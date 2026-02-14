@@ -3,13 +3,7 @@
 
 set -ouex pipefail
 
-ZED_URL="https://zed.dev/api/releases/stable/latest/zed-linux-x86_64.tar.gz"
-if [ -L "/opt" ] || [ -d "/var/opt" ]; then
-    ZED_DEST="/var/opt/zed.app"
-else
-    ZED_DEST="/opt/zed.app"
-fi
-TMP_FILE="/tmp/zed.tar.gz"
+
 
 # 1. Use the native COPR plugin instead of manual curls
 # Syntax: dnf copr enable <user/project> -y
@@ -86,37 +80,9 @@ dnf5 install -y "${LAYERED_PACKAGES[@]}"
 
 rpm-ostree install -y pycharm-community
 
-echo "Installing Zed Editor..."
-
-# 1. Download and Extract
-curl -Lo "$TMP_FILE" "$ZED_URL"
-mkdir -p "$ZED_DEST"
-tar -xzf "$TMP_FILE" -C "$ZED_DEST" --strip-components=1
-
-# 2. Set Permissions and Symlink
-chown -R root:root "$ZED_DEST"
-ln -sf "$ZED_DEST/bin/zed" /usr/local/bin/zed
-
-# 3. Desktop Integration
-DESKTOP_FILE="/usr/share/applications/dev.zed.Zed.desktop"
-cp "$ZED_DEST/share/applications/zed.desktop" "$DESKTOP_FILE"
-
-# Use sed to point the Desktop file to the correct executable path
-sed -i "s|Exec=zed|Exec=$ZED_DEST/libexec/zed-editor|g" "$DESKTOP_FILE"
-sed -i "s|Icon=zed|Icon=zed|g" "$DESKTOP_FILE"
-
-# 4. Icon Deployment (Looping to avoid repetition)
-for size in 512x512 1024x1024; do
-    ICON_DIR="/usr/share/icons/hicolor/$size/apps"
-    mkdir -p "$ICON_DIR"
-    cp "$ZED_DEST/share/icons/hicolor/$size/apps/zed.png" "$ICON_DIR/"
-done
-
-# Cleanup
-rm "$TMP_FILE"
-echo "Zed installed successfully!"
-
 dnf5 clean all
+
+#./install-zed.sh
 
 # Call other Scripts
 ./desktop-defaults.sh
