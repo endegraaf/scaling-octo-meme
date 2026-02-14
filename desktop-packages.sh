@@ -50,8 +50,8 @@ LAYERED_PACKAGES=(
     cascadia-fonts-all
     chromium
     code
-    emacs
     filezilla
+    firefox
     genisoimage
     git-credential-libsecret
     git-credential-oauth
