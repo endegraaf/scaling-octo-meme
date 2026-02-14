@@ -1,3 +1,4 @@
 cosign.key
 output/
 build-anaconda-iso.sh
+nohup.out
