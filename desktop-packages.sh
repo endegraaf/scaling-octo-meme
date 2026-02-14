@@ -24,7 +24,7 @@ done
 
 # 2. External repos (non-COPR)
 echo "Adding external repositories..."
-dnf config-manager --add-repo https://repository.mullvad.net/rpm/stable/mullvad.repo
+dnf addrepo --from-repofile=https://repository.mullvad.net/rpm/stable/mullvad.repo
 
 # VSCode because it's still better for a lot of things
 tee /etc/yum.repos.d/vscode.repo <<'EOF'
