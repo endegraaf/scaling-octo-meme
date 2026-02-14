@@ -6,7 +6,7 @@ mkdir -p /var/lib/alternatives
 
 
 # My Packages
-./desktop-packages.sh
+./minimal-desktop-packages.sh
 
 
 ## NOTES:
