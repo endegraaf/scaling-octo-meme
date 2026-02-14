@@ -3,6 +3,11 @@
 
 set -ouex pipefail
 
+COPR_URL="https://copr.fedorainfracloud.org/coprs"
+
+FEDORA_MAJOR_VERSION=$(rpm -E %fedora)
+
+echo "Add COPR repos for F${FEDORA_MAJOR_VERSION}"
 
 # Fonts
 curl --retry 3 -L  \
