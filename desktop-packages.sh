@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-# source https://github.com/m2Giles/m2os/blob/main/desktop-packages.sh
+# source https://github.com/m2Giles/m2os/blob/main/build_files/desktop-packages.sh
 
 set -ouex pipefail
 

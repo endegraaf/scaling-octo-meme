@@ -5,3 +5,4 @@ alias gca='git commit -a '
 alias gcm='git commit -m '
 alias cat=bat
 alias k=kubectl
+alias cat=bat
