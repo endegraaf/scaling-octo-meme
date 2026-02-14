@@ -3,39 +3,28 @@
 
 set -ouex pipefail
 
+ZED_URL="https://zed.dev/api/releases/stable/latest/zed-linux-x86_64.tar.gz"
+ZED_DEST="/opt/zed.app"
+TMP_FILE="/tmp/zed.tar.gz"
 
-FEDORA_MAJOR_VERSION=$(rpm -E %fedora)
-COPR_URL=https://copr.fedorainfracloud.org/coprs/
+# 1. Use the native COPR plugin instead of manual curls
+# Syntax: dnf copr enable <user/project> -y
+REPOS=(
+    "atim/ubuntu-fonts"
+    "che/nerd-fonts"
+    "hikariknight/looking-glass-kvmfr"
+    "gmaglione/podman-bootc"
+    "phracek/PyCharm"
+)
 
-echo "Add COPR repos for F${FEDORA_MAJOR_VERSION}"
+echo "Enabling COPR repositories..."
+for repo in "${REPOS[@]}"; do
+    dnf copr enable "$repo" -y
+done
 
-# Fonts
-curl --retry 3 -L  \
-    $COPR_URL/atim/ubuntu-fonts/repo/fedora-"${FEDORA_MAJOR_VERSION}"/atim-ubuntu-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo \
-    -o /etc/yum.repos.d/atim-ubuntu-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo
-
-curl --retry 3 -L  \
-    $COPR_URL/che/nerd-fonts/repo/fedora-"${FEDORA_MAJOR_VERSION}"/che-nerd-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo \
-    -o /etc/yum.repos.d/_copr_che-nerd-fonts-"${FEDORA_MAJOR_VERSION}".repo
-
-# Kvmfr module
-curl --retry 3 -L  \
-    $COPR_URL/hikariknight/looking-glass-kvmfr/repo/fedora-"${FEDORA_MAJOR_VERSION}"/hikariknight-looking-glass-kvmfr-fedora-"${FEDORA_MAJOR_VERSION}".repo \
-    -o /etc/yum.repos.d/hikariknight-looking-glass-kvmfr-fedora-"${FEDORA_MAJOR_VERSION}".repo
-
-# Podman-bootc
-curl --retry 3 -L \
-    $COPR_URL/gmaglione/podman-bootc/repo/fedora-"${FEDORA_MAJOR_VERSION}"/gmaglione-podman-bootc-fedora-"${FEDORA_MAJOR_VERSION}".repo \
-    -o /etc/yum.repos.d/gmaglione-podman-bootc-fedora-"${FEDORA_MAJOR_VERSION}".repo
-
-# PyCharm
-curl --retry 3 -L \
-    $COPR_URL/phracek/PyCharm/repo/fedora-"${FEDORA_MAJOR_VERSION}"/phracek-PyCharm-fedora-"${FEDORA_MAJOR_VERSION}".repo \
-    -o /etc/yum.repos.d/phracek-pycharm-"${FEDORA_MAJOR_VERSION}".repo
-
-# VPN
-curl --retry 3 -Lo /etc/yum.repos.d/mullvad.repo https://repository.mullvad.net/rpm/stable/mullvad.repo
-
+# 2. External repos (non-COPR)
+echo "Adding external repositories..."
+dnf config-manager --add-repo https://repository.mullvad.net/rpm/stable/mullvad.repo
 
 # VSCode because it's still better for a lot of things
 tee /etc/yum.repos.d/vscode.repo <<'EOF'
@@ -79,6 +68,7 @@ LAYERED_PACKAGES=(
     powerline
     powerline-fonts
     python3-pip
+    ubuntu-family-fonts
     qemu
     qemu-user-binfmt
     qemu-user-static
@@ -91,23 +81,35 @@ dnf5 install -y "${LAYERED_PACKAGES[@]}"
 
 rpm-ostree install -y pycharm-community
 
-# Zed because why not?
-curl -Lo /tmp/zed.tar.gz \
-    https://zed.dev/api/releases/stable/latest/zed-linux-x86_64.tar.gz
-mkdir -p /usr/lib/zed.app/
-tar -xvf /tmp/zed.tar.gz -C /usr/lib/zed.app/ --strip-components=1
-chown 0:0 -R /usr/lib/zed.app
-ln -s /usr/lib/zed.app/bin/zed /usr/bin/zed-cli
-cp /usr/lib/zed.app/share/applications/zed.desktop /usr/share/applications/dev.zed.Zed.desktop
-mkdir -p /usr/share/icons/hicolor/1024x1024/apps
-cp {/usr/lib/zed.app,/usr}/share/icons/hicolor/512x512/apps/zed.png
-cp {/usr/lib/zed.app,/usr}/share/icons/hicolor/1024x1024/apps/zed.png
-sed -i "s@Exec=zed@Exec=/usr/lib/zed.app/libexec/zed-editor@g" /usr/share/applications/dev.zed.Zed.desktop
+echo "Installing Zed Editor..."
 
-# Emacs LSP Booster
-EMACS_LSP_BOOSTER="$(curl -L https://api.github.com/repos/blahgeek/emacs-lsp-booster/releases/latest | jq -r '.assets[].browser_download_url' | grep musl.zip$)"
-curl -Lo /tmp/emacs-lsp-booster.zip "$EMACS_LSP_BOOSTER"
-unzip -d /usr/bin/ /tmp/emacs-lsp-booster.zip
+# 1. Download and Extract
+curl -Lo "$TMP_FILE" "$ZED_URL"
+mkdir -p "$ZED_DEST"
+tar -xzf "$TMP_FILE" -C "$ZED_DEST" --strip-components=1
+
+# 2. Set Permissions and Symlink
+chown -R root:root "$ZED_DEST"
+ln -sf "$ZED_DEST/bin/zed" /usr/local/bin/zed
+
+# 3. Desktop Integration
+DESKTOP_FILE="/usr/share/applications/dev.zed.Zed.desktop"
+cp "$ZED_DEST/share/applications/zed.desktop" "$DESKTOP_FILE"
+
+# Use sed to point the Desktop file to the correct executable path
+sed -i "s|Exec=zed|Exec=$ZED_DEST/libexec/zed-editor|g" "$DESKTOP_FILE"
+sed -i "s|Icon=zed|Icon=zed|g" "$DESKTOP_FILE"
+
+# 4. Icon Deployment (Looping to avoid repetition)
+for size in 512x512 1024x1024; do
+    ICON_DIR="/usr/share/icons/hicolor/$size/apps"
+    mkdir -p "$ICON_DIR"
+    cp "$ZED_DEST/share/icons/hicolor/$size/apps/zed.png" "$ICON_DIR/"
+done
+
+# Cleanup
+rm "$TMP_FILE"
+echo "Zed installed successfully!"
 
 dnf5 clean all
 
