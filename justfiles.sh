@@ -3,5 +3,5 @@
 set -eou pipefail
 
 echo "Adding Custom OS just recipes"
-echo "import \"/usr/share/scaling-octo-meme/just/scaling-octo-meme.just\"" >>/usr/share/ublue-os/justfile
-echo "" 
+echo "import \"/usr/share/scaling-octo-meme/just/scaling-octo-meme.just\"" >>/usr/share/ublue-os/just/60-custom.just
+echo ""
