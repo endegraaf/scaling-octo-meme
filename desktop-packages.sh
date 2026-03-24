@@ -85,5 +85,6 @@ dnf5 clean all
 #./install-zed.sh
 
 # Call other Scripts
+./justfiles.sh
 ./desktop-defaults.sh
 ./enable-services.sh
