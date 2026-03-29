@@ -46,6 +46,7 @@ LAYERED_PACKAGES=(
     code
     filezilla
     firefox
+    gamemode
     genisoimage
     git-credential-libsecret
     git-credential-oauth
@@ -58,7 +59,6 @@ LAYERED_PACKAGES=(
     libvirt-nss
     nerd-fonts
     obs-studio
-    p7zip
     podman-bootc
     podman-compose
     podman-machine
