@@ -1,10 +1,14 @@
-repo_organization := "testertech"
+repo_organization := "endegraaf"
 rechunker_image := "ghcr.io/hhd-dev/rechunk:v1.0.1"
 iso_builder_image := "ghcr.io/jasonn3/build-container-installer:v1.2.3"
 images := '(
+    [scaling-octo-meme]=scaling-octo-meme
     [kinoite]=kinoite
     [kinoite-dx]=kinoite-dx
+    [bazzite]=bazzite
+    [bazzite-dx]=bazzite-dx
 )'
+
 flavors := '(
     [main]=main
     [nvidia]=nvidia

@@ -2,7 +2,7 @@
 # See list here: https://github.com/orgs/ublue-os/packages?repo_name=main
 
 ### 2. SOURCE IMAGE
-FROM ghcr.io/ublue-os/aurora-dx-nvidia-open:latest
+FROM ghcr.io/ublue-os/aurora-dx-nvidia-open:latest as base
 COPY system_files /
 
 ENV LANG C.UTF-8

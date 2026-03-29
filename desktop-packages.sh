@@ -23,7 +23,7 @@ done
 # 2. External repos (non-COPR)
 echo "Adding external repositories..."
 # Direct download to the repos directory (Works for DNF and DNF5)
-curl -sLo /etc/yum.repos.d/mullvad.repo https://repository.mullvad.net/rpm/stable/mullvad.repo
+# curl -sLo /etc/yum.repos.d/mullvad.repo https://repository.mullvad.net/rpm/stable/mullvad.repo
 
 # VSCode because it's still better for a lot of things
 tee /etc/yum.repos.d/vscode.repo <<'EOF'
@@ -67,6 +67,7 @@ LAYERED_PACKAGES=(
     powerline
     powerline-fonts
     python3-pip
+    steam
     ubuntu-family-fonts
     qemu
     qemu-user-binfmt
