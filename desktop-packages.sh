@@ -24,7 +24,7 @@ done
 echo "Adding external repositories..."
 # Direct download to the repos directory (Works for DNF and DNF5)
 # curl -sLo /etc/yum.repos.d/mullvad.repo https://repository.mullvad.net/rpm/stable/mullvad.repo
-curl -sLo /etc/yum.repos.d/winehq.repo https://dl.winehq.org/wine-builds/fedora/43/winehq.repo
+# curl -sLo /etc/yum.repos.d/winehq.repo https://dl.winehq.org/wine-builds/fedora/43/winehq.repo
 
 # VSCode because it's still better for a lot of things
 tee /etc/yum.repos.d/vscode.repo <<'EOF'
@@ -76,7 +76,6 @@ LAYERED_PACKAGES=(
     syncthing
     virt-v2v
     vlc
-    winehq-stable
     ydotool
 )
 dnf5 install -y "${LAYERED_PACKAGES[@]}"
