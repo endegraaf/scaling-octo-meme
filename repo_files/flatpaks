@@ -1,8 +1,8 @@
 com.github.k4zmu2a.spacecadetpinball
-org.kde.gwenview
-com.valvesoftware.Steam
-net.lutris.Lutris
-net.davidotek.pupgui2
+flathub org.kde.gwenview
+flathub com.valvesoftware.Steam
+flathub net.lutris.Lutris
+flathub net.davidotek.pupgui2
 runtime/org.freedesktop.Platform.VulkanLayer.gamescope/x86_64/24.08
 runtime/org.freedesktop.Platform.VulkanLayer.OBSVkCapture/x86_64/24.08
 runtime/com.obsproject.Studio.Plugin.OBSVkCapture/x86_64/stable
