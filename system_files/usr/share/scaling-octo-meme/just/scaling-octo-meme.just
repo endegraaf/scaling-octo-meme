@@ -106,3 +106,85 @@ som-clean:
     rpm-ostree cleanup -bm
     sudo docker system prune -af
     sudo podman system prune -af
+
+
+# Create a Fedora 43 development toolbox for building/compiling Linux software
+som-setup-devbox:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    TOOLBOX_NAME="devbox"
+    FEDORA_IMAGE="registry.fedoraproject.org/fedora-toolbox:43"
+
+    # Skip if already exists
+    if toolbox list --containers | grep -q "^${TOOLBOX_NAME}$"; then
+        echo "Toolbox '${TOOLBOX_NAME}' already exists. Enter it with: toolbox enter ${TOOLBOX_NAME}"
+        exit 0
+    fi
+
+    echo "Creating Fedora 43 dev toolbox..."
+    toolbox create --image "${FEDORA_IMAGE}" --container "${TOOLBOX_NAME}"
+
+    echo "Installing build tools inside toolbox..."
+    toolbox run --container "${TOOLBOX_NAME}" bash -c "
+        sudo dnf install -y \
+          # Core build tools
+          @development-tools \
+          gcc gcc-c++ clang llvm \
+          cmake ninja-build meson \
+          make automake autoconf libtool \
+          pkg-config \
+          git \
+          # Debuggers & profilers
+          gdb valgrind strace ltrace \
+          # Common dev libs
+          python3-devel \
+          openssl-devel \
+          zlib-devel \
+          libffi-devel \
+          readline-devel \
+          sqlite-devel \
+          bzip2-devel \
+          xz-devel \
+          cups-devel \
+          # Image libs
+          libjpeg-turbo-devel \
+          libpng-devel \
+          libtiff-devel \
+          exiv2-devel \
+          lcms2-devel \
+          cfitsio-devel \
+          # Qt6
+          qt6-qtbase-devel \
+          qt6-qtbase-private-devel \
+          qt6-qtsvg-devel \
+          qt6-qtmultimedia-devel \
+          qt6-qtwayland-devel \
+          # Wayland
+          wayland-devel \
+          wayland-protocols-devel \
+          # KDE Frameworks 6
+          extra-cmake-modules \
+          kf6-kio-devel \
+          kf6-ki18n-devel \
+          kf6-kparts-devel \
+          kf6-kwindowsystem-devel \
+          kf6-kiconthemes-devel \
+          kf6-knotifications-devel \
+          kf6-kguiaddons-devel \
+          kf6-kwidgetsaddons-devel \
+          kf6-kcrash-devel \
+          kf6-kitemmodels-devel \
+          kf6-baloo-devel \
+          kf6-purpose-devel \
+          kf6-kdoctools-devel \
+          plasma-activities-devel \
+          # Annotation support
+          kimageannotator-qt6-devel \
+          kcolorpicker-qt6-devel \
+        && sudo dnf clean all
+    "
+
+    echo ""
+    echo "✅ Dev toolbox ready! Enter it with:"
+    echo "   toolbox enter ${TOOLBOX_NAME}"

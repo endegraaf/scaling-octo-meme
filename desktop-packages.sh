@@ -77,6 +77,11 @@ LAYERED_PACKAGES=(
     virt-v2v
     vlc
     ydotool
+    kf5-plasma
+    kf5-plasmaquick
+    plasma-workspace
+    qt5-qtdeclarative
+    qt5-qtwayland
 )
 dnf5 install -y "${LAYERED_PACKAGES[@]}"
 
