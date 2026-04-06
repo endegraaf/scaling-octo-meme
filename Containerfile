@@ -3,6 +3,7 @@
 
 ### 2. SOURCE IMAGE
 FROM ghcr.io/ublue-os/aurora-dx-nvidia-open:latest as base
+FROM ghcr.io/ublue-os/bazzite:stable as bazzite
 COPY system_files /
 
 ENV LANG C.UTF-8
