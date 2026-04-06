@@ -78,7 +78,6 @@ LAYERED_PACKAGES=(
     vlc
     ydotool
     kf5-plasma
-    kf5-plasmaquick
     plasma-workspace
     qt5-qtdeclarative
     qt5-qtwayland
