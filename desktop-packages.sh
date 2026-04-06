@@ -13,6 +13,7 @@ REPOS=(
     "hikariknight/looking-glass-kvmfr"
     "gmaglione/podman-bootc"
     "phracek/PyCharm"
+    "ublue-os/bazzite"
 )
 
 echo "Enabling COPR repositories..."
@@ -41,6 +42,7 @@ dnf5 group install -y virtualization
 # Layered Applications
 LAYERED_PACKAGES=(
     bat
+    bazzite-portal
     cascadia-code-fonts
     cascadia-fonts-all
     chromium
